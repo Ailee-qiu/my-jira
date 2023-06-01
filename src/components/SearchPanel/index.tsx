@@ -1,7 +1,9 @@
-import { Button, DatePicker, Form, Input, Select, Spin } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
-import { Project, User } from '../common/type';
+import { Button, DatePicker, Form, Input, Select, Spin, TreeSelect } from 'antd';
 import moment from 'moment';
+import { useRef, useState } from 'react';
+import { currency, unit } from '../../common/constant';
+import { Project, User } from '../../common/type';
+import './index.less';
 interface SearchPanelProps {
     users:User[];
     param:Partial<Pick<Project, "name" | "personId">>;
@@ -20,19 +22,6 @@ export const SearchPanel = (
     }
     const formRef = useRef(null)
     const [form ]= Form.useForm()
-    const options: any[] | undefined = [
-        {
-          value: '10',
-          label: '人民币',
-        },
-        {
-          value: '21',
-          label: '港币',
-        },
-        {
-          value: '32',
-          label: '美元',
-        }]
     // useEffect(()=>{
     //     const param = formRef?.current.getFieldsValue()
     // },[])
@@ -47,11 +36,17 @@ export const SearchPanel = (
         <Spin spinning={loading}>
             <Form {...formItemLayout} 
             form={form} 
-            style={{ marginBottom: "2rem" }} 
-            layout={"inline"} 
             onFinish={queryProject} 
-            ref={formRef}>
-                <Form.Item name={"date"} label={"日期"} rules={[
+            ref={formRef}
+            style={{display:'block'}}
+        >
+            <div className={'c-search-panel'}>
+            <div className={'leftContent'}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(auto-fill, ${348}px)`,
+            }}>
+                     <Form.Item name={"date"} label={"起止日期"} rules={[
                     {
                         required:true,
                         message:'please choose the date'
@@ -59,9 +54,9 @@ export const SearchPanel = (
                 ]}>
                     <RangePicker/>
                 </Form.Item>
-            <Form.Item name={"account"} label={"账号"}>
+            <Form.Item name={"account"} label={"编码"}>
                 <Input
-                placeholder={'账号'}
+                placeholder={'请输入'}
                 type='text'
                 /> 
             </Form.Item>
@@ -70,19 +65,27 @@ export const SearchPanel = (
                 mode='multiple'
                 placeholder='please select'
                 allowClear
-                style={{ width: 150 }}
-                size={'middle'}
-                options={options}
+                options={currency}
                 filterOption={(input, option) =>
                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                   }
                 />
             </Form.Item>
-            <Form.Item>
-                <Button type='primary' htmlType='submit' style={{margin:40}}>
+            <Form.Item name={"unit"} label={"单位"}>
+                <TreeSelect
+                treeData={unit}
+                treeCheckable='true'
+                showCheckedStrategy='SHOW_PARENT'
+                placeholder='please select'
+                />
+            </Form.Item>
+            </div>
+            <div className={'rightBtn'}>
+                <Button type='primary' htmlType='submit' style={{marginRight:12}}>
                     查询
                 </Button>
-            </Form.Item>
+            </div>
+            </div>
         </Form>
         </Spin>
         
