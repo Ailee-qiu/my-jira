@@ -1,12 +1,11 @@
-
-import SearchPanel from './components/SearchPanel';
+import SearchPanel from './components/CSearchPanel';
+import ProjectList from './pages/project-list';
 
 function App() {
   return (
     <div style={{display:'block'}}>
       {/* <HomePage></HomePage> */}
-      <SearchPanel 
-     ></SearchPanel>
+      <ProjectList></ProjectList>
     </div>
   );
 }

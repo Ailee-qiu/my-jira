@@ -1,0 +1,28 @@
+.monitor-query {
+  .tab-table-wrapper {
+    // height: calc(100vh - 166px);
+    .tab-table-container {
+      height: 100%;
+      background-color: #fff;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      .tab-table-search-content {
+        padding-bottom: 4px;
+      }
+      .tab-table-content {
+        flex: 1;
+        overflow: auto;
+      }
+    }
+  }
+  :global {
+    .ant-tabs-top > .ant-tabs-nav:before {
+      border-bottom: none;
+    }
+  }
+
+  .tab-table-wrapper-hasfoot {
+    height: calc(100vh - 201px);
+  }
+}

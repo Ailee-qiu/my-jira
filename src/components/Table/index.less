@@ -1,0 +1,333 @@
+.titleWrapper {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    border-top: none;
+    justify-content: space-between;
+  
+    .titleLeft {
+      height: 60px;
+      display: flex;
+  
+      .titleName {
+        font-size: 16px;
+        line-height: 60px;
+        font-weight: 700;
+        color: #021d38;
+        position: relative;
+  
+        img {
+          position: absolute;
+          margin-left: 10px;
+          top: 50%;
+          left: 100%;
+          transform: translateY(-50%);
+        }
+      }
+  
+      .titleTips {
+        margin: 6px 0 0 10px;
+        font-size: 12px;
+        line-height: 60px;
+        color: rgb(143, 21, 21);
+      }
+    }
+  
+    .titleRight {
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+  
+  // 表格高度自适应设置
+  .c-table {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+  
+    .ant-table-wrapper {
+      flex: 1;
+      overflow: hidden;
+      border: 1px solid #e4e6e9;
+      border-radius: 4px;
+  
+      .ant-table-thead th.ant-table-column-has-sorters {
+        transition: none;
+      }
+  
+      .ant-table {
+        height: 100%;
+  
+        .ant-tag {
+          border: none;
+          border-radius: 10%;
+          font-size: 14px;
+        }
+  
+        .ant-table-container {
+          height: 100%;
+          // 两侧投影
+          &::before {
+            box-shadow: none !important;
+          }
+          &::after {
+            box-shadow: none !important;
+          }
+  
+          .ant-table-thead {
+            position: unset;
+  
+            > tr > th {
+              background-color: #f2f3f4;
+              padding: 9px 16px;
+              color: rgba(2, 29, 56, 0.65);
+  
+              //  给设置按钮留出位置
+              &:nth-last-child(2) {
+                padding-right: 40px;
+              }
+  
+              // 分割线
+              &:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not(
+                  [colspan]
+                ):before {
+                height: 40px;
+                background-color: #e4e6e9 !important;
+              }
+  
+              .ant-table-column-title {
+                width: 100%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+              }
+            }
+  
+            .settingIcon {
+              position: absolute;
+              height: 40px;
+              width: 50px;
+              right: 0px;
+              top: 0;
+              z-index: 2;
+              background-color: #f2f3f4;
+  
+              th {
+                padding: 0;
+                display: block;
+                height: 40px;
+                width: 48px;
+                border-left: 1px solid #e4e6e9;
+                //  box-shadow: -3px 0 5px 0 rgba(58, 75, 110, 0.05);
+                border-radius: 0 6px 3px 0;
+              }
+  
+              :hover {
+                cursor: pointer;
+              }
+            }
+          }
+  
+          .ant-table-body {
+            height: calc(100% - 40px);
+  
+            .ant-table-placeholder td {
+              border-bottom: none;
+            }
+  
+            td.ant-table-column-sort {
+              background-color: inherit;
+            }
+  
+            .ant-table-row {
+              background-color: #fff;
+            }
+  
+            .ant-table-row.clickRowStyle {
+              background-color: var(--ant-primary-2) !important;
+            }
+  
+            .ant-table-tbody > tr.ant-table-row-selected {
+              background-color: var(--ant-primary-2);
+  
+              > td {
+                background-color: inherit;
+              }
+            }
+  
+            .ant-table-cell-fix-right {
+              background-color: inherit;
+            }
+  
+            .ant-table-cell-fix-left {
+              background-color: inherit;
+              .c-expand-icon {
+                float: left;
+                margin-top: 2.5px;
+              }
+            }
+  
+            .ant-table-cell-row-hover {
+              background-color: var(--ant-primary-3) !important;
+              cursor: pointer;
+            }
+          }
+  
+          .ant-table-selection-col {
+            width: 48px;
+          }
+  
+          .ant-table-cell.ant-table-selection-column {
+            padding: 0;
+          }
+  
+          //  .ant-table-cell.ant-table-selection-column>div {
+          //    padding: 9px 0;
+          //  }
+        }
+      }
+    }
+  
+    .ant-table-tbody > tr > td.ant-table-cell {
+      line-height: 22px;
+      padding: 9px 16px;
+  
+      .ant-btn.ant-btn-link.c-button {
+        height: 22px;
+      }
+    }
+  
+    &.c-table-empty div.ant-table-wrapper > div > div > div > div > div.ant-table-body > table {
+      height: 100%;
+    }
+  
+    &.c-table-tight .ant-table-tbody > tr > td.ant-table-cell {
+      padding: 3px 16px;
+    }
+  
+    &.c-table-strips .ant-table-wrapper .ant-table .ant-table-container .ant-table-body .ant-table-row:nth-child(2n) {
+      background-color: #f7f9fb;
+    }
+  
+    &.c-table-tight .ant-table .ant-table-container .ant-table-cell.ant-table-selection-column > div {
+      padding: 3px 0;
+    }
+  
+    .ant-spin-nested-loading,
+    .ant-spin-container {
+      height: 100%;
+    }
+  }
+  
+  .setting-popover {
+    .ant-popover-inner-content {
+      padding: 16px;
+    }
+    .ant-popover-arrow {
+      display: none;
+    }
+  }
+  
+  .settingCard {
+    width: 208px;
+  
+    .settingStyle {
+      float: none;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      height: 24px;
+  
+      .ant-typography {
+        color: #1b324f;
+        padding: 3px 8px;
+        border: 1px solid #abb5c9;
+      }
+  
+      .leftBtn {
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+      }
+  
+      .rightBtn {
+        border-left: none;
+        border-radius: 0 4px 4px 0;
+      }
+  
+      .active {
+        color: var(--ant-primary-color);
+        border: 1px solid var(--ant-primary-color);
+      }
+  
+      .leftBtn.active {
+        border-right: 1px solid var(--ant-primary-color);
+      }
+  
+      .rightBtn.active {
+        border-left: 1px solid var(--ant-primary-color);
+      }
+    }
+  
+    .settingList {
+      width: 100%;
+      max-height: 280px;
+      overflow: auto;
+  
+      .drag-item {
+        &:hover {
+          .ant-form-item .toTopIcon {
+            visibility: visible;
+          }
+        }
+      }
+  
+      .ant-form-item {
+        margin: 0 !important;
+  
+        .ant-form-item-control-input {
+          min-height: 28px;
+        }
+  
+        .toTopIcon {
+          position: absolute;
+          top: 50%;
+          right: 24px;
+          color: #69788a;
+          font-size: 16px;
+          transform: translate(0, -50%);
+          visibility: hidden;
+        }
+  
+        .handleIcon {
+          font-size: 16px;
+          color: #69788a;
+          line-height: 1;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+  
+        .drag-title {
+          max-width: 125px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  
+    .settingFooter {
+      margin-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+      height: 28px;
+  
+      a {
+        line-height: 32px;
+        margin: 0 10px;
+      }
+    }
+  }
+  
