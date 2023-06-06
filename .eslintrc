@@ -15,3 +15,4 @@
     "jsx-a11y/no-noninteractive-tabindex": "off"
   }
 }
+//json-server --watch --port 3003 --host 127.0.0.1 db.json
