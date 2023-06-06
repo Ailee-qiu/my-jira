@@ -7,6 +7,7 @@ import { Table } from "antd";
 import BExportExcel from "../../components/BExportExcel";
 import useSearchItemsHook from "./useSearchItemsHook";
 import CSearchPanel from "../../components/CSearchPanel";
+import axios from "axios";
 
 const ProjectList = () => {
 	const formRef = useRef(null) as any
@@ -64,7 +65,10 @@ const ProjectList = () => {
 
 		const onQuery = () =>{
 			const y = formRef.current.form?.getFieldsValue()
-			console.log(y)
+			axios.get('api/user').then((response) => {
+				console.log(response.data, 1)
+			})
+			// console.log(y)
 		}
     return (
         <div className="global-table-search-content">
