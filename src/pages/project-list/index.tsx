@@ -1,13 +1,12 @@
-import { useRef, useState } from "react";
-import SearchPanel from "../../components/CSearchPanel";
+import { Table } from "antd";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import BExportExcel from "../../components/BExportExcel";
+import CSearchPanel from "../../components/CSearchPanel";
 import CDrawer from "../../components/Drawer";
 import CTable from "../../components/Table";
-import useTableColumnsHook from "./useTableColumnsHook";
-import { Table } from "antd";
-import BExportExcel from "../../components/BExportExcel";
 import useSearchItemsHook from "./useSearchItemsHook";
-import CSearchPanel from "../../components/CSearchPanel";
-import axios from "axios";
+import useTableColumnsHook from "./useTableColumnsHook";
 
 const ProjectList = () => {
 	const formRef = useRef(null) as any
@@ -20,6 +19,11 @@ const ProjectList = () => {
     const close = ()=>{
         setVisible(false)
     }
+    useEffect(()=>{
+      axios.get('/user').then(res => {
+        console.log(res.data)
+      })
+    })
 
     const rowSelection ={
         fixed:true,
@@ -65,9 +69,9 @@ const ProjectList = () => {
 
 		const onQuery = () =>{
 			const y = formRef.current.form?.getFieldsValue()
-			axios.get('api/user').then((response) => {
-				console.log(response.data, 1)
-			})
+      axios.get('/user').then(res => {
+        console.log(res.data)
+      })
 			// console.log(y)
 		}
     return (

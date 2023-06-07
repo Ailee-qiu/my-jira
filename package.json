@@ -52,9 +52,12 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint":"10.0.3",
     "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-config-ts-react-important-stuff": "^3.0.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "mockjs": "^1.1.0"
+    "mockjs": "^1.1.0",
+    "prettier-eslint": "^15.0.1"
   }
 }
